@@ -124,11 +124,17 @@ User model
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  favorites: [Ideons]
+  name: {type: String},
+  points: {type: Number},
+  ideas: [{type: Schema.Types.ObjectId,ref:'Idea'}],
+  votes: [{type: Schema.Types.ObjectId,ref:'Idea'}],
+  comments: [{type: Schema.Types.ObjectId,ref:'Comment'}],
+  interests: [{type: Enum}],
+  timestamps
 }
 ```
 
-Ideons model
+Idea model
 
 ```javascript
  {
@@ -137,38 +143,23 @@ Ideons model
    category: {type: String},
    img: {type: String},
    votes: {type: Number},
-   comments: null,
-   players: [{type: Schema.Types.ObjectId,ref:'Participant'}],
-   games: [{type: Schema.Types.ObjectId,ref:'Game'}]
+   comments: [{type: Schema.Types.ObjectId,ref:'Comment'}],
+   timestamps
  }
 ```
 
 
 
-Player model
+Comment model
 
 ```javascript
 {
-  name: {type: String, required: true},
-  img: {type: String},
-  score: []
+  message: {type: String, required: true},
+  authorID: [{type: Schema.Types.ObjectId,ref:'User'}],
+  ideaID: [{type: Schema.Types.ObjectId,ref:'Idea'}],
+  timestamps
 }
 ```
-
-
-
-Game model
-
-```javascript
-{
-  player1: [{type: Schema.Types.ObjectId,ref:'Participant'}],
-  player2: [{type: Schema.Types.ObjectId,ref:'Player'}],
-  player2: [{type: Schema.Types.ObjectId,ref:'Player'}],
-  winner: {type: String},
-  img: {type: String}
-}
-```
-
 
 <br>
 
