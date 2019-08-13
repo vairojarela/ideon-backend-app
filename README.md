@@ -124,16 +124,20 @@ User model
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  favorites: [Tournament]
+  favorites: [Ideons]
 }
 ```
 
-Tournament model
+Ideons model
 
 ```javascript
  {
-   name: {type: String, required: true},
+   title: {type: String, required: true},
+   description: {type: String},
+   category: {type: String},
    img: {type: String},
+   votes: {type: Number},
+   comments: null,
    players: [{type: Schema.Types.ObjectId,ref:'Participant'}],
    games: [{type: Schema.Types.ObjectId,ref:'Game'}]
  }
