@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const ideaSchema = new Schema({
+  authorID:{
+    type: String,
+  },
+  authorName:{
+    type: String,
+  },
   title: {
     type: String,
   },

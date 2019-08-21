@@ -25,7 +25,7 @@ router.get('/:id', isLoggedIn(), async (req, res, next) => {
   try {
     const listOfPostsFromUser = await Idea.find()
     console.log(listOfPostsFromUser)
-    res.status(200).json({ listOfPosts })
+    res.status(200).json({ listOfPostsFromUser })
   } catch (error) {
     next(error)
   }
