@@ -14,8 +14,12 @@ const {
   validationLoggin
 } = require('../helpers/middlewares');
 
-router.get('/me', isLoggedIn(), (req, res, next) => {
-  res.json(req.session.currentUser);
+
+
+router.get('/private', isLoggedIn(), (req, res, next) => {
+  res.status(200).json({
+    message: 'This is a private message'
+  });
 });
 
 router.post(
@@ -69,10 +73,10 @@ router.post('/logout', isLoggedIn(), (req, res, next) => {
   return res.status(204).send();
 });
 
-router.get('/private', isLoggedIn(), (req, res, next) => {
-  res.status(200).json({
-    message: 'This is a private message'
-  });
+router.get('/me', isLoggedIn(), (req, res, next) => {
+  res.json(req.session.currentUser);
 });
+
+
 
 module.exports = router;

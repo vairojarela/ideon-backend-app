@@ -1,16 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 const userSchema = new Schema({
-  username: {
+  message: {
     type: String,
-    required: true,
-    unique: true
   },
-  password: {
+  description: {
     type: String,
-    required: true
   },
+  authorID: [{
+    type: ObjectId,
+    ref: 'Comment'
+  }],
+  ideaID: [{
+    type: ObjectId,
+    ref: 'Idea'
+  }],
 }, {
   timestamps: {
     createdAt: 'created_at',
