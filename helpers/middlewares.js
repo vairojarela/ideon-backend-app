@@ -1,7 +1,6 @@
 'use strict';
 
 const createError = require('http-errors');
-console.log('middleware')
 exports.isLoggedIn = () => (req, res, next) => {
   if (req.session.currentUser) {
     next();
