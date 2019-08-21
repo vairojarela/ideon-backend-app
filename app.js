@@ -12,8 +12,8 @@ const cors = require('cors');
 require('dotenv').config();
 
 const auth = require('./routes/auth');
-const users = require('./routes/users');
 const posts = require('./routes/posts');
+const users = require('./routes/users');
 
 mongoose
   .connect(process.env.MONGODB_URI, {
